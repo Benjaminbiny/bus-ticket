@@ -1,26 +1,35 @@
 #include<iostream>
+#include <string>
+#include <cctype>
 
 using namespace std;
-int main()
+
+struct customer{
+    char firstname[20];
+    char lastname[20];
+    int age,phone_number;
+    
+};
+
+void  choosestartpt()
 {
- char firstname[50],lastname[50],destination[50],starting_place[50];
- int day,month,year,phone_number,age;
- day=12,month=01,year=1983;
- cout<<"enter your firstname\n";
- cin>>firstname;
- cout<<"enter your lastname\n"; 
- cin>>lastname;
- cout<<"enter your age"<<endl;
- cin>>age;
- cout <<"enter yor phone number"<<endl;
- cin>>phone_number; 
- cout<< "enter your starting place\n";
- cin>>starting_place; 
- cout<<"enter your destination "<<endl;
- cin>>destination;
-  cout<<"\t\t\t\t\t\t\tDate"<<day <<"/"<<month<<"/"<<year<<endl;
- cout<< "\tFirst name "<<firstname<<"\t\t\tLastname "<<lastname<<endl;
- cout<<"\tPhone Number +251"<<phone_number<<"\t\tAge "<<age<<endl;
- cout<< "\tStarting place "<<starting_place<<"\t\t\tDestination "<<destination;
-return 0;	
+    int choice1,choice2,choice3,choice4,choice5;
+    cout <<"choose your starting place number"<<endl;
+    cout<<"1.Bahirdar\n";
+    cout<<"2.Adiss abeba\n";
+    cout<<"3.gonder\n";
+    cin>>choice1;
+    cout<<"choose your  destination"<<endl;
+     switch (choice1) {
+         case 1: {
+             cout<<"1.adiss abeba\n";
+             cout<<"2.gonder\n";
+             cin>>choice2;
+             if(choice2==1)
+                 cout<<"price=1000";
+             else 
+              cout<<"price==300";
+
+  }
+  }
 }
