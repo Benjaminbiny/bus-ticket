@@ -1,8 +1,5 @@
 #include<iostream>
-#include<bit>
-#include<string>
-#include<stdio.h>
-#include <bits/stdc++.h>
+
 using namespace std;
 int main()
 {
