@@ -1,0 +1,516 @@
+#include <iostream>
+#include <string>
+#include <iomanip>
+using namespace std;
+const int MAX_SEATS = 30; // Maximum number of seats per bus 
+class Date {
+   public :
+    int day;
+    int month;
+    int year;
+Date(){
+	int day=0;
+	int month=0;
+	int year=0;
+}
+};
+class Passenger {
+	public:
+    string name;
+    string gender;
+     string starting_place;
+      string destination_place;
+    Date dob;
+    int seat;
+    Passenger(){
+    	int seat =0;
+    	
+	}
+};
+ Passenger addisabeba_bahirdar[31];
+     Passenger bahirdar_addisabeba[31];
+       Passenger gondar_addisabeba[31];
+         Passenger addisabeba_gondar[31];
+           Passenger bahirdar_gondar[31];
+             Passenger gondar_bahirdar[31];
+void destination_choice(Passenger passengers[]);
+void display_menu();
+void view_reserved_seats(Passenger passengers[]);
+void menu_choice(int x);
+int main() {
+	int x;
+   menu_choice(x);
+  return 0;
+}
+void menu_choice(int x){
+	 Passenger passengers[MAX_SEATS];
+    for (int i = 0; i < MAX_SEATS; i++) {
+        passengers[i].seat = 0;
+    }
+    int choice;
+			display_menu();
+			   cin>>choice;
+        switch (choice) {
+            case 1: // Reserve a seat
+				destination_choice(passengers);
+                break;
+            case 2: // View all reserved seats
+                view_reserved_seats(passengers);
+                break;
+
+            case 3: // Exit
+                cout << "\nGoodbye!\n";
+                break;
+            default:
+                cout << "\nError: Invalid choice. Please try again.\n";
+              int w;
+			    menu_choice(w);
+                break;
+        }
+}
+void display_menu() {
+	 cout << "\n\n\t\twelcome to KMB bus station \n";
+    cout << "\nMENU\n";
+    cout << "------------\n";
+    cout << "1. Reserve a seat\n";
+    cout << "2. View all reserved seats\n";
+    cout << "3. Exit\n\n";
+    cout << "Enter your choice: " << "------------";
+}
+void view_reserved_seats(Passenger passengers[]) {
+    bool empty = true;
+    cout << "\n TO SEE RESERVED SEATS\n";
+    cout << "==============\n";
+    cout << "chose your starting place\n";
+    cout << "1. Addis abeba\n";
+    cout << "2. Bahir dar\n";
+    cout << "3. Gondar\n";
+    cout<<"4.menu  \n";
+    int starting_place;
+	int destination_place;
+    cin>>starting_place;
+    switch(starting_place){
+	case 1:	{
+		do{
+		  cout << "chose your destination\n";
+        cout << "1.Bahir dar\n";
+        cout << "2.Gondar\n";
+        cout << "3.back\n";
+        	 cin >> destination_place;
+        switch (destination_place)
+        {
+        case 1:{bool empty = true;
+                cout << "\nRESERVED SEATS\n";
+                cout << "==============\n";
+                for (int i = 0; i < MAX_SEATS; i++) {
+if (addisabeba_bahirdar[i].seat != 0) {
+                        cout << "Seat " << addisabeba_bahirdar[i].seat << ": " << addisabeba_bahirdar[i].name << "\n";
+                        empty = false;
+                    }
+                }
+                if (empty) {
+                    cout << "No seats are currently reserved.\n";
+                }
+                int x;
+                menu_choice(x);
+                break;
+}
+          case 2:{
+          	  bool empty = true;
+                cout << "\nRESERVED SEATS\n";
+                cout << "==============\n";
+                for (int i = 0; i < MAX_SEATS; i++) {
+if (addisabeba_gondar[i].seat != 0) {
+                        cout << "Seat " << addisabeba_gondar[i].seat << ": " << addisabeba_gondar[i].name << "\n";
+                        empty = false;
+                    }
+                }
+                if (empty) {
+                    cout << "No seats are currently reserved.\n";
+                }
+                break;
+                int x;
+                menu_choice(x);
+}
+           case 3:{
+           	view_reserved_seats(passengers);
+			break;
+		   }
+  default :
+  	cout<<"please try again";
+  }
+}while(destination_place !=3);
+  break ;
+}
+  case 2:{
+  	do{
+    cout << "chose your destination\n";
+    cout << "1.Addis abeba \n";
+    cout << "2.Gondar\n";
+    cout<<"3.back\n";
+    cin >> destination_place;
+    switch (destination_place)
+    {
+  	case 1:{
+  		 bool empty = true;
+                cout << "\nRESERVED SEATS\n";
+                cout << "==============\n";
+                for (int i = 0; i < MAX_SEATS; i++) {
+if (bahirdar_addisabeba[i].seat != 0) {
+                        cout << "Seat " << bahirdar_addisabeba[i].seat << ": " << bahirdar_addisabeba[i].name << "\n";
+                        empty = false;
+                    }
+                }
+                if (empty) {
+                    cout << "No seats are currently reserved.\n";
+                }
+                break;
+                int x;
+                menu_choice(x);
+	  }
+	case 2:{
+		 bool empty = true;
+                cout << "\nRESERVED SEATS\n";
+                cout << "==============\n";
+                for (int i = 0; i < MAX_SEATS; i++) {
+if (bahirdar_gondar[i].seat != 0) {
+                        cout << "Seat " << bahirdar_gondar[i].seat << ": " << bahirdar_gondar[i].name << "\n";
+                        empty = false;
+                    }
+                }
+                if (empty) {
+                    cout << "No seats are currently reserved.\n";
+                }
+                break;
+                int x;
+                menu_choice(x);
+	}
+ case 3:{
+           	view_reserved_seats(passengers);
+			break;
+		   }
+  default :
+  	cout<<"please try again";
+  }
+}while(destination_place !=3);
+  break ;
+}
+    case 3:{
+    	do {
+cout << "chose your destination\n";
+cout << "1.Bahir dar\n";
+cout << "2.Addis abeba    \n";
+cout << "3.back   \n";
+cin >> destination_place;
+switch (destination_place){
+    	case 1:{
+    		 bool empty = true;
+                cout << "\nRESERVED SEATS\n";
+                cout << "==============\n";
+                for (int i = 0; i < MAX_SEATS; i++) {
+if (gondar_bahirdar[i].seat != 0) {
+                        cout << "Seat " << gondar_bahirdar[i].seat << ": " << gondar_bahirdar[i].name << "\n";
+                        empty = false;
+                    }
+                }
+                if (empty) {
+                    cout << "No seats are currently reserved.\n";
+                }
+                break;
+                int x;
+                menu_choice(x);
+		}
+	case 2:{
+		bool empty = true;
+                cout << "\nRESERVED SEATS\n";
+                cout << "==============\n";
+                for (int i = 0; i < MAX_SEATS; i++) {
+if (gondar_addisabeba[i].seat != 0) {
+                        cout << "Seat " << gondar_addisabeba[i].seat << ": " << gondar_addisabeba[i].name << "\n";
+                        empty = false;
+                    }
+                }
+                if (empty) {
+                    cout << "No seats are currently reserved.\n";
+                }
+                break;
+                int x;
+                menu_choice(x);
+	}
+ case 3:{
+           	view_reserved_seats(passengers);
+			break;
+		   }
+  default :
+  	cout<<"please try again";
+  }
+}while(destination_place !=3);
+  break ;
+}
+case 4:
+	int y;
+	menu_choice(y);
+break ;
+}
+}
+void destination_choice(Passenger passengers[]){
+   cout << "chose your starting place\n";
+    cout << "1. Addis abeba\n";
+    cout << "2. Bahir dar\n";
+    cout << "3. Gondar\n";
+    cout<<"4.menu  \n";
+    int starting_place;
+	int destination_place;
+    cin >>starting_place;
+    switch (starting_place){
+    case 1:{
+        do{
+        cout << "chose your destination\n";
+        cout << "1.Bahir dar\n";
+        cout << "2.Gondar\n";
+        cout << "3.back\n";
+        	 cin >> destination_place;
+        switch (destination_place)
+        {
+        case 1:{
+            cout << "your fee will be 1234.5 birr\n";
+           int seat_number;
+    bool valid_seat_number;
+    do {
+        valid_seat_number = true;
+        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cin >> seat_number;
+        if (seat_number < 1 || seat_number > MAX_SEATS) {
+            cout << "Error: Invalid seat number. Please try again.\n";
+            valid_seat_number = false;
+        }
+        else if (addisabeba_bahirdar[seat_number].seat != 0) {
+            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            valid_seat_number = false;
+        }
+    } while (!valid_seat_number);
+    cin.ignore(); // To clear input buffer 
+   addisabeba_bahirdar[seat_number].seat = seat_number;
+    cout << "Enter passenger NAME : ";
+    getline(cin, addisabeba_bahirdar[seat_number].name);
+    cout << "Enter passenger gender (male/female): ";
+    getline(cin, addisabeba_bahirdar[seat_number].gender);
+    cout << "Enter passenger date of birth (dd/mm/yyyy): ";
+    cin >> addisabeba_bahirdar[seat_number].dob.day >>addisabeba_bahirdar[seat_number].dob.month >> addisabeba_bahirdar[seat_number].dob.year;
+    cout << "Seat " << seat_number << " reserved for " <<addisabeba_bahirdar[seat_number].name <<"("<<addisabeba_bahirdar[seat_number].gender<<","<<addisabeba_bahirdar[seat_number].dob.day<< 
+	"/"<<addisabeba_bahirdar[seat_number].dob.month <<"/"<< addisabeba_bahirdar[seat_number].dob.year<<")"".\n";
+    int x;
+    menu_choice(x);
+			       break;
+			   }
+        case 2:{
+            cout << "your fee will be 1674.5 birr\n";
+           int seat_number;
+    bool valid_seat_number;
+    do {
+        valid_seat_number = true;
+        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cin >> seat_number;
+        if (seat_number < 1 || seat_number > MAX_SEATS) {
+            cout << "Error: Invalid seat number. Please try again.\n";
+            valid_seat_number = false;
+        }
+        else if (addisabeba_gondar[seat_number-1].seat != 0) {
+            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            valid_seat_number = false;
+        }
+    } while (!valid_seat_number);
+    cin.ignore(); // To clear input buffer 
+    addisabeba_gondar[seat_number].seat = seat_number;
+    cout << "Enter passenger NAME : ";
+    getline(cin, addisabeba_gondar[seat_number].name);
+    cout << "Enter passenger gender (male/female): ";
+    getline(cin, addisabeba_gondar[seat_number].gender);
+    cout << "Enter passenger date of birth (dd/mm/yyyy): ";
+    cin >> addisabeba_gondar[seat_number].dob.day >> addisabeba_gondar[seat_number].dob.month >> addisabeba_gondar[seat_number].dob.year;
+    cout << "Seat " << seat_number << " reserved for " << addisabeba_gondar[seat_number].name <<"("<<addisabeba_gondar[seat_number].gender<<","<<addisabeba_gondar[seat_number].dob.day<< 
+	"/"<<addisabeba_gondar[seat_number].dob.month <<"/"<< addisabeba_gondar[seat_number].dob.year<<")"".\n"; ".\n";
+    int x;
+    menu_choice(x);
+			       break;
+			   }
+            case 3:{
+            	 destination_choice(passengers);
+            	  break ;
+}
+        default:{
+            cout << "please try again \n";
+            break ;
+        } 
+   }
+    }while(destination_place!=3);
+    break;
+}
+case 2:{
+	do{
+    cout << "chose your destination\n";
+    cout << "1.Addis abeba \n";
+    cout << "2.Gondar\n";
+    cout<<"3.back\n";
+    cin >> destination_place;
+    switch (destination_place)
+    {
+    case 1:{
+        cout << "your fee will be 1234.5 birr\n";
+        int seat_number;
+    bool valid_seat_number;
+    do {
+        valid_seat_number = true;
+        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cin >> seat_number;
+        if (seat_number < 1 || seat_number > MAX_SEATS) {
+            cout << "Error: Invalid seat number. Please try again.\n";
+            valid_seat_number = false;
+        }
+        else if (bahirdar_addisabeba[seat_number-1].seat != 0) {
+            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            valid_seat_number = false;
+        }
+    } while (!valid_seat_number);
+    cin.ignore(); // To clear input buffer  
+   bahirdar_addisabeba[seat_number].seat = seat_number;
+    cout << "Enter passenger NAME : ";
+    getline(cin, bahirdar_addisabeba[seat_number].name);
+    cout << "Enter passenger gender (male/female): ";
+    getline(cin, bahirdar_addisabeba[seat_number].gender);
+    cout << "Enter passenger date of birth (dd/mm/yyyy): ";
+    cin >> bahirdar_addisabeba[seat_number].dob.day >> bahirdar_addisabeba[seat_number].dob.month >>bahirdar_addisabeba[seat_number].dob.year;
+    cout << "Seat " << seat_number << " reserved for " << bahirdar_addisabeba[seat_number].name <<"("<<bahirdar_addisabeba[seat_number].gender<<","<<bahirdar_addisabeba[seat_number].dob.day<< 
+	"/"<<bahirdar_addisabeba[seat_number].dob.month <<"/"<< bahirdar_addisabeba[seat_number].dob.year<<")"<<"\n";
+    int x;
+    menu_choice(x);
+			       break;
+			   }
+    case 2:{
+        cout << "your fee will be 274.5 birr\n";
+       int seat_number;
+    bool valid_seat_number;
+    do {
+        valid_seat_number = true;
+        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cin >> seat_number;
+        if (seat_number < 1 || seat_number > MAX_SEATS) {
+            cout << "Error: Invalid seat number. Please try again.\n";
+            valid_seat_number = false;
+        }
+        else if (bahirdar_gondar[seat_number].seat != 0) {
+            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            valid_seat_number = false;
+        }
+    } while (!valid_seat_number);
+    cin.ignore(); // To clear input buffer 
+   bahirdar_gondar[seat_number].seat = seat_number;
+    cout << "Enter passenger NAME : ";
+    getline(cin,bahirdar_gondar[seat_number].name);
+    cout << "Enter passenger gender (male/female): ";
+    getline(cin, bahirdar_gondar[seat_number].gender);
+    cout << "Enter passenger date of birth (dd/mm/yyyy): ";
+    cin >> bahirdar_gondar[seat_number].dob.day >> bahirdar_gondar[seat_number].dob.month >>bahirdar_gondar[seat_number].dob.year;
+    cout << "Seat " << seat_number << " reserved for " << bahirdar_gondar[seat_number].name <<"("<<bahirdar_addisabeba[seat_number].gender<<","<<bahirdar_addisabeba[seat_number].dob.day<< 
+	"/"<< bahirdar_gondar[seat_number].dob.month <<"/"<< bahirdar_addisabeba[seat_number].dob.year<<")"".\n";
+    int x;
+    menu_choice(x);
+			       break;
+			   }
+          case 3:
+            	 destination_choice(passengers);
+            	  break ;
+    default:
+        cout << "please try again \n";
+        break ;
+        }
+    }while(destination_place!=3);
+break;
+}
+case 3: {
+do {
+cout << "chose your destination\n";
+cout << "1.Bahir dar\n";
+cout << "2.Addis abeba    \n";
+cout << "3.back   \n";
+cin >> destination_place;
+switch (destination_place){
+case 1:{
+    cout << "your fee will be 274.5 birr\n";
+   int seat_number;
+    bool valid_seat_number;
+    do {
+        valid_seat_number = true;
+        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cin >> seat_number;
+        if (seat_number < 1 || seat_number > MAX_SEATS) {
+            cout << "Error: Invalid seat number. Please try again.\n";
+            valid_seat_number = false;
+        }
+        else if (gondar_bahirdar[seat_number].seat != 0) {
+            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            valid_seat_number = false;
+        }
+    } while (!valid_seat_number);
+    cin.ignore(); // To clear input buffer  
+    gondar_bahirdar[seat_number].seat = seat_number;
+    cout << "Enter passenger NAME : ";
+    getline(cin, gondar_bahirdar[seat_number].name);
+    cout << "Enter passenger gender (male/female): ";
+    getline(cin, gondar_bahirdar[seat_number].gender);
+    cout << "Enter passenger date of birth (dd/mm/yyyy): ";
+    cin >> gondar_bahirdar[seat_number].dob.day >> gondar_bahirdar[seat_number].dob.month >> gondar_bahirdar[seat_number].dob.year;
+    cout << "Seat " << seat_number << " reserved for " << gondar_bahirdar[seat_number].name <<"("<<gondar_bahirdar[seat_number].gender <<","<<gondar_bahirdar[seat_number].dob.day<< 
+	"/"<<gondar_bahirdar[seat_number].dob.month <<"/"<< gondar_bahirdar[seat_number].dob.year<<")"".\n";
+    int x;
+    menu_choice(x);
+			       break;
+			   }
+case 2:{
+cout << "your fee will be 1674.5 birr\n";
+  int seat_number;
+    bool valid_seat_number;
+    do {
+        valid_seat_number = true;
+        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cin >> seat_number;
+        if (seat_number < 1 || seat_number > MAX_SEATS) {
+            cout << "Error: Invalid seat number. Please try again.\n";
+            valid_seat_number = false;
+        }
+        else if (gondar_addisabeba[seat_number].seat != 0) {
+            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            valid_seat_number = false;
+        }
+    } while (!valid_seat_number);
+    cin.ignore(); // To clear input buffer 
+    gondar_addisabeba[seat_number].seat = seat_number;
+    cout << "Enter passenger NAME : ";
+    getline(cin, gondar_addisabeba[seat_number].name);
+    cout << "Enter passenger gender (male/female): ";
+    getline(cin, gondar_addisabeba[seat_number].gender);
+    cout << "Enter passenger date of birth (dd/mm/yyyy): ";
+    cin >>gondar_addisabeba[seat_number].dob.day >> gondar_addisabeba[seat_number].dob.month >>gondar_addisabeba[seat_number].dob.year;
+    cout << "Seat " << seat_number << " reserved for " << gondar_addisabeba[seat_number].name  <<"(" << gondar_addisabeba[seat_number].gender  <<","<< gondar_addisabeba[seat_number].dob.day<< 
+	"/"<< gondar_addisabeba[seat_number].dob.month <<"/"<<  gondar_addisabeba[seat_number].dob.year<<")"".\n";
+    int x;
+    menu_choice(x);
+			       break;
+			   }
+case 3:
+            	 destination_choice(passengers);
+            	  break ;
+default:
+    cout << "please try again \n";
+    break ;}
+}while(destination_place!=3);
+}
+case 4:
+	int y;
+	 menu_choice(y);
+break ;
+	default:
+		cout<<"please try again";
+		destination_choice(passengers);
+}
+}
