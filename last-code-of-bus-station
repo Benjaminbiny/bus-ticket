@@ -35,51 +35,25 @@ class Passenger {
              Passenger gondar_bahirdar[31];
 void destination_choice(Passenger passengers[]);
 void display_menu();
-void view_reserved_seats(Passenger passengers[]);
+void view_scheduled_seats(Passenger passengers[]);
 void menu_choice(int x);
 int main() {
 	int x;
    menu_choice(x);
   return 0;
 }
-void menu_choice(int x){
-	 Passenger passengers[MAX_SEATS];
-    for (int i = 0; i < MAX_SEATS; i++) {
-        passengers[i].seat = 0;
-    }
-    int choice;
-			display_menu();
-			   cin>>choice;
-        switch (choice) {
-            case 1: // Reserve a seat
-				destination_choice(passengers);
-                break;
-            case 2: // View all reserved seats
-                view_reserved_seats(passengers);
-                break;
-
-            case 3: // Exit
-                cout << "\nGoodbye!\n";
-                break;
-            default:
-                cout << "\nError: Invalid choice. Please try again.\n";
-              int w;
-			    menu_choice(w);
-                break;
-        }
-}
 void display_menu() {
 	 cout << "\n\n\t\twelcome to KMB bus station \n";
     cout << "\nMENU\n";
     cout << "------------\n";
-    cout << "1. Reserve a seat\n";
-    cout << "2. View all reserved seats\n";
+    cout << "1. scheduled a seat\n";
+    cout << "2. View all scheduled seats\n";
     cout << "3. Exit\n\n";
     cout << "Enter your choice: " << "------------";
 }
-void view_reserved_seats(Passenger passengers[]) {
+void view_scheduled_seats(Passenger passengers[]) {
     bool empty = true;
-    cout << "\n TO SEE RESERVED SEATS\n";
+    cout << "\n TO SEE scheduled SEATS\n";
     cout << "==============\n";
     cout << "chose your starting place\n";
     cout << "1. Addis abeba\n";
@@ -99,41 +73,39 @@ void view_reserved_seats(Passenger passengers[]) {
         	 cin >> destination_place;
         switch (destination_place)
         {
-        case 1:{bool empty = true;
-                cout << "\nRESERVED SEATS\n";
-                cout << "==============\n";
-                for (int i = 0; i < MAX_SEATS; i++) {
-if (addisabeba_bahirdar[i].seat != 0) {
-                        cout << "Seat " << addisabeba_bahirdar[i].seat << ": " << addisabeba_bahirdar[i].name << "\n";
-                        empty = false;
-                    }
-                }
-                if (empty) {
-                    cout << "No seats are currently reserved.\n";
-                }
-                int x;
-                menu_choice(x);
-                break;
+        case 1:{
+    for (int i = 0; i < MAX_SEATS; i++) {
+        if (addisabeba_bahirdar[i].seat != 0) {
+            cout << "Seat " << addisabeba_bahirdar[i].seat << ": " << addisabeba_bahirdar[i].name << " (" << addisabeba_bahirdar[i].gender << ", " <<addisabeba_bahirdar[i].starting_place
+	<<","<<addisabeba_bahirdar[i].destination_place<<addisabeba_bahirdar[i].dob.day << "/"  << addisabeba_bahirdar[i].dob.month << "/" << addisabeba_bahirdar[i].dob.year << ")" << endl;
+            empty = false;
+        }
+    }
+    if (empty) {
+        cout << "No seats are currently scheduled.\n";
+    }
+    int x;
+    menu_choice(x);
+    break ;
+    
 }
           case 2:{
-          	  bool empty = true;
-                cout << "\nRESERVED SEATS\n";
-                cout << "==============\n";
-                for (int i = 0; i < MAX_SEATS; i++) {
-if (addisabeba_gondar[i].seat != 0) {
-                        cout << "Seat " << addisabeba_gondar[i].seat << ": " << addisabeba_gondar[i].name << "\n";
-                        empty = false;
-                    }
-                }
-                if (empty) {
-                    cout << "No seats are currently reserved.\n";
-                }
-                break;
-                int x;
-                menu_choice(x);
+          	  for (int i = 0; i < MAX_SEATS; i++) {
+        if (addisabeba_gondar[i].seat != 0) {
+            cout << "Seat " << addisabeba_gondar[i].seat << ": " << addisabeba_gondar[i].name << " (" << addisabeba_gondar[i].gender << ", " <<	addisabeba_gondar[i].starting_place
+	<<","<<addisabeba_gondar[i].destination_place<< addisabeba_gondar[i].dob.day << "/"  << addisabeba_gondar[i].dob.month << "/" << addisabeba_gondar[i].dob.year << ")" << endl;
+            empty = false;
+        }
+    }
+    if (empty) {
+        cout << "No seats are currently scheduled.\n";
+    }
+	int x;
+    menu_choice(x);
+	break;
 }
            case 3:{
-           	view_reserved_seats(passengers);
+           	view_scheduled_seats(passengers);
 			break;
 		   }
   default :
@@ -152,41 +124,36 @@ if (addisabeba_gondar[i].seat != 0) {
     switch (destination_place)
     {
   	case 1:{
-  		 bool empty = true;
-                cout << "\nRESERVED SEATS\n";
-                cout << "==============\n";
-                for (int i = 0; i < MAX_SEATS; i++) {
-if (bahirdar_addisabeba[i].seat != 0) {
-                        cout << "Seat " << bahirdar_addisabeba[i].seat << ": " << bahirdar_addisabeba[i].name << "\n";
-                        empty = false;
-                    }
-                }
-                if (empty) {
-                    cout << "No seats are currently reserved.\n";
-                }
-                break;
-                int x;
-                menu_choice(x);
+  		  for (int i = 0; i < MAX_SEATS; i++) {
+        if (bahirdar_addisabeba[i].seat != 0) {
+            cout << "Seat " << bahirdar_addisabeba[i].seat << ": " << bahirdar_addisabeba[i].name << " (" << bahirdar_addisabeba[i].gender << ", " <<	bahirdar_addisabeba[i].starting_place
+	<<","<<bahirdar_addisabeba[i].destination_place<<bahirdar_addisabeba[i].dob.day << "/"  <<bahirdar_addisabeba[i].dob.month << "/" << bahirdar_addisabeba[i].dob.year << ")" << endl;
+            empty = false;
+        }
+    }
+    if (empty) {
+        cout << "No seats are currently scheduled.\n";
+    }
+    
+		break;
 	  }
 	case 2:{
-		 bool empty = true;
-                cout << "\nRESERVED SEATS\n";
-                cout << "==============\n";
-                for (int i = 0; i < MAX_SEATS; i++) {
-if (bahirdar_gondar[i].seat != 0) {
-                        cout << "Seat " << bahirdar_gondar[i].seat << ": " << bahirdar_gondar[i].name << "\n";
-                        empty = false;
-                    }
-                }
-                if (empty) {
-                    cout << "No seats are currently reserved.\n";
-                }
-                break;
-                int x;
-                menu_choice(x);
+		  for (int i = 0; i < MAX_SEATS; i++) {
+        if (bahirdar_gondar[i].seat != 0) {
+            cout << "Seat " << bahirdar_gondar[i].seat << ": " << bahirdar_gondar[i].name << " (" << bahirdar_gondar[i].gender << ", " <<bahirdar_gondar[i].starting_place
+	<<","<<bahirdar_gondar[i].destination_place<< bahirdar_gondar[i].dob.day << "/"  << bahirdar_gondar[i].dob.month << "/" << bahirdar_gondar[i].dob.year << ")" << endl;
+            empty = false;
+        }
+    }
+    if (empty) {
+        cout << "No seats are currently scheduled.\n";
+    }
+    int x;
+    menu_choice(x);
+		break;
 	}
  case 3:{
-           	view_reserved_seats(passengers);
+           	view_scheduled_seats(passengers);
 			break;
 		   }
   default :
@@ -204,54 +171,76 @@ cout << "3.back   \n";
 cin >> destination_place;
 switch (destination_place){
     	case 1:{
-    		 bool empty = true;
-                cout << "\nRESERVED SEATS\n";
-                cout << "==============\n";
-                for (int i = 0; i < MAX_SEATS; i++) {
-if (gondar_bahirdar[i].seat != 0) {
-                        cout << "Seat " << gondar_bahirdar[i].seat << ": " << gondar_bahirdar[i].name << "\n";
-                        empty = false;
-                    }
-                }
-                if (empty) {
-                    cout << "No seats are currently reserved.\n";
-                }
-                break;
-                int x;
-                menu_choice(x);
+    		  for (int i = 0; i < MAX_SEATS; i++) {
+        if (gondar_bahirdar[i].seat != 0) {
+            cout << "Seat " << gondar_bahirdar[i].seat << ": " << gondar_bahirdar[i].name << " (" << gondar_bahirdar[i].gender << ", " <<	gondar_bahirdar[i].starting_place
+	<<","<<gondar_bahirdar[i].destination_place<< gondar_bahirdar[i].dob.day << "/"  <<gondar_bahirdar[i].dob.month << "/" << gondar_bahirdar[i].dob.year << ")" << endl;
+            empty = false;
+        }
+    }
+    if (empty) {
+        cout << "No seats are currently scheduled.\n";
+    }
+    int x;
+    menu_choice(x);
+			break;
 		}
 	case 2:{
-		bool empty = true;
-                cout << "\nRESERVED SEATS\n";
-                cout << "==============\n";
-                for (int i = 0; i < MAX_SEATS; i++) {
-if (gondar_addisabeba[i].seat != 0) {
-                        cout << "Seat " << gondar_addisabeba[i].seat << ": " << gondar_addisabeba[i].name << "\n";
-                        empty = false;
-                    }
-                }
-                if (empty) {
-                    cout << "No seats are currently reserved.\n";
-                }
-                break;
-                int x;
-                menu_choice(x);
+		  for (int i = 0; i < MAX_SEATS; i++) {
+        if (gondar_addisabeba[i].seat != 0) {
+            cout << "Seat " << gondar_addisabeba[i].seat << ": " << gondar_addisabeba[i].name << " (" <<gondar_addisabeba[i].gender << ", " <<gondar_addisabeba[i].starting_place
+	<<","<<gondar_addisabeba[i].destination_place<<gondar_addisabeba[i].dob.day << "/"  <<gondar_addisabeba[i].dob.month << "/" << gondar_addisabeba[i].dob.year << ")" << endl;
+            empty = false;
+        }
+    }
+    if (empty) {
+        cout << "No seats are currently scheduled.\n";
+    }
+    int x;
+    menu_choice(x);
+		break;
 	}
  case 3:{
-           	view_reserved_seats(passengers);
+           	view_scheduled_seats(passengers);
 			break;
 		   }
   default :
-  	cout<<"please try again";
+  	cout<<"error: "<<"please try again";
   }
 }while(destination_place !=3);
   break ;
 }
 case 4:
 	int y;
-	menu_choice(y);
+    menu_choice(y);
 break ;
 }
+}
+void menu_choice(int x){
+	 Passenger passengers[MAX_SEATS];
+    for (int i = 0; i < MAX_SEATS; i++) {
+        passengers[i].seat = 0;
+    }
+    int choice;
+			display_menu();
+			   cin>>choice;
+        switch (choice) {
+            case 1: // scheduled a seat
+				destination_choice(passengers);
+                break;
+            case 2: // View all scheduled seats
+                view_scheduled_seats(passengers);
+                break;
+
+            case 3: // Exit
+                cout << "\nGoodbye!\n";
+                break;
+            default:
+                cout << "\nError: Invalid choice. Please try again.\n";
+              int w;
+			    menu_choice(w);
+                break;
+        }
 }
 void destination_choice(Passenger passengers[]){
    cout << "chose your starting place\n";
@@ -278,14 +267,14 @@ void destination_choice(Passenger passengers[]){
     bool valid_seat_number;
     do {
         valid_seat_number = true;
-        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cout << "\nEnter the seat number you wish to scheduled: " << "------------";
         cin >> seat_number;
         if (seat_number < 1 || seat_number > MAX_SEATS) {
             cout << "Error: Invalid seat number. Please try again.\n";
             valid_seat_number = false;
         }
         else if (addisabeba_bahirdar[seat_number].seat != 0) {
-            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            cout << "Error: Seat " << seat_number << " is already scheduled.\n Please choose another seat ------------.\n";
             valid_seat_number = false;
         }
     } while (!valid_seat_number);
@@ -297,7 +286,7 @@ void destination_choice(Passenger passengers[]){
     getline(cin, addisabeba_bahirdar[seat_number].gender);
     cout << "Enter passenger date of birth (dd/mm/yyyy): ";
     cin >> addisabeba_bahirdar[seat_number].dob.day >>addisabeba_bahirdar[seat_number].dob.month >> addisabeba_bahirdar[seat_number].dob.year;
-    cout << "Seat " << seat_number << " reserved for " <<addisabeba_bahirdar[seat_number].name <<"("<<addisabeba_bahirdar[seat_number].gender<<","<<addisabeba_bahirdar[seat_number].dob.day<< 
+    cout << "Seat " << seat_number << " scheduled for " <<addisabeba_bahirdar[seat_number].name <<"("<<addisabeba_bahirdar[seat_number].gender<<","<<addisabeba_bahirdar[seat_number].dob.day<< 
 	"/"<<addisabeba_bahirdar[seat_number].dob.month <<"/"<< addisabeba_bahirdar[seat_number].dob.year<<")"".\n";
     int x;
     menu_choice(x);
@@ -309,14 +298,14 @@ void destination_choice(Passenger passengers[]){
     bool valid_seat_number;
     do {
         valid_seat_number = true;
-        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cout << "\nEnter the seat number you wish to scheduled: " << "------------";
         cin >> seat_number;
         if (seat_number < 1 || seat_number > MAX_SEATS) {
             cout << "Error: Invalid seat number. Please try again.\n";
             valid_seat_number = false;
         }
         else if (addisabeba_gondar[seat_number-1].seat != 0) {
-            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            cout << "Error: Seat " << seat_number << " is already scheduled.\n Please choose another seat ------------.\n";
             valid_seat_number = false;
         }
     } while (!valid_seat_number);
@@ -328,7 +317,7 @@ void destination_choice(Passenger passengers[]){
     getline(cin, addisabeba_gondar[seat_number].gender);
     cout << "Enter passenger date of birth (dd/mm/yyyy): ";
     cin >> addisabeba_gondar[seat_number].dob.day >> addisabeba_gondar[seat_number].dob.month >> addisabeba_gondar[seat_number].dob.year;
-    cout << "Seat " << seat_number << " reserved for " << addisabeba_gondar[seat_number].name <<"("<<addisabeba_gondar[seat_number].gender<<","<<addisabeba_gondar[seat_number].dob.day<< 
+    cout << "Seat " << seat_number << " scheduled for " << addisabeba_gondar[seat_number].name <<"("<<addisabeba_gondar[seat_number].gender<<","<<addisabeba_gondar[seat_number].dob.day<< 
 	"/"<<addisabeba_gondar[seat_number].dob.month <<"/"<< addisabeba_gondar[seat_number].dob.year<<")"".\n"; ".\n";
     int x;
     menu_choice(x);
@@ -339,7 +328,7 @@ void destination_choice(Passenger passengers[]){
             	  break ;
 }
         default:{
-            cout << "please try again \n";
+            cout <<"Error\n"<<"please try again \n";
             break ;
         } 
    }
@@ -361,14 +350,14 @@ case 2:{
     bool valid_seat_number;
     do {
         valid_seat_number = true;
-        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cout << "\nEnter the seat number you wish to scheduled: " << "------------";
         cin >> seat_number;
         if (seat_number < 1 || seat_number > MAX_SEATS) {
             cout << "Error: Invalid seat number. Please try again.\n";
             valid_seat_number = false;
         }
         else if (bahirdar_addisabeba[seat_number-1].seat != 0) {
-            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            cout << "Error: Seat " << seat_number << " is already scheduled.\n Please choose another seat ------------.\n";
             valid_seat_number = false;
         }
     } while (!valid_seat_number);
@@ -380,7 +369,7 @@ case 2:{
     getline(cin, bahirdar_addisabeba[seat_number].gender);
     cout << "Enter passenger date of birth (dd/mm/yyyy): ";
     cin >> bahirdar_addisabeba[seat_number].dob.day >> bahirdar_addisabeba[seat_number].dob.month >>bahirdar_addisabeba[seat_number].dob.year;
-    cout << "Seat " << seat_number << " reserved for " << bahirdar_addisabeba[seat_number].name <<"("<<bahirdar_addisabeba[seat_number].gender<<","<<bahirdar_addisabeba[seat_number].dob.day<< 
+    cout << "Seat " << seat_number << " scheduled for " << bahirdar_addisabeba[seat_number].name <<"("<<bahirdar_addisabeba[seat_number].gender<<","<<bahirdar_addisabeba[seat_number].dob.day<< 
 	"/"<<bahirdar_addisabeba[seat_number].dob.month <<"/"<< bahirdar_addisabeba[seat_number].dob.year<<")"<<"\n";
     int x;
     menu_choice(x);
@@ -392,14 +381,14 @@ case 2:{
     bool valid_seat_number;
     do {
         valid_seat_number = true;
-        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cout << "\nEnter the seat number you wish to scheduled: " << "------------";
         cin >> seat_number;
         if (seat_number < 1 || seat_number > MAX_SEATS) {
             cout << "Error: Invalid seat number. Please try again.\n";
             valid_seat_number = false;
         }
         else if (bahirdar_gondar[seat_number].seat != 0) {
-            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            cout << "Error: Seat " << seat_number << " is already scheduled.\n Please choose another seat ------------.\n";
             valid_seat_number = false;
         }
     } while (!valid_seat_number);
@@ -411,7 +400,7 @@ case 2:{
     getline(cin, bahirdar_gondar[seat_number].gender);
     cout << "Enter passenger date of birth (dd/mm/yyyy): ";
     cin >> bahirdar_gondar[seat_number].dob.day >> bahirdar_gondar[seat_number].dob.month >>bahirdar_gondar[seat_number].dob.year;
-    cout << "Seat " << seat_number << " reserved for " << bahirdar_gondar[seat_number].name <<"("<<bahirdar_addisabeba[seat_number].gender<<","<<bahirdar_addisabeba[seat_number].dob.day<< 
+    cout << "Seat " << seat_number << " scheduled for " << bahirdar_gondar[seat_number].name <<"("<<bahirdar_addisabeba[seat_number].gender<<","<<bahirdar_addisabeba[seat_number].dob.day<< 
 	"/"<< bahirdar_gondar[seat_number].dob.month <<"/"<< bahirdar_addisabeba[seat_number].dob.year<<")"".\n";
     int x;
     menu_choice(x);
@@ -421,7 +410,7 @@ case 2:{
             	 destination_choice(passengers);
             	  break ;
     default:
-        cout << "please try again \n";
+         cout << "Error: \n"<<"please try again \n";
         break ;
         }
     }while(destination_place!=3);
@@ -441,14 +430,14 @@ case 1:{
     bool valid_seat_number;
     do {
         valid_seat_number = true;
-        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cout << "\nEnter the seat number you wish to scheduled: " << "------------";
         cin >> seat_number;
         if (seat_number < 1 || seat_number > MAX_SEATS) {
             cout << "Error: Invalid seat number. Please try again.\n";
             valid_seat_number = false;
         }
         else if (gondar_bahirdar[seat_number].seat != 0) {
-            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            cout << "Error: Seat " << seat_number << " is already scheduled.\n Please choose another seat ------------.\n";
             valid_seat_number = false;
         }
     } while (!valid_seat_number);
@@ -460,7 +449,7 @@ case 1:{
     getline(cin, gondar_bahirdar[seat_number].gender);
     cout << "Enter passenger date of birth (dd/mm/yyyy): ";
     cin >> gondar_bahirdar[seat_number].dob.day >> gondar_bahirdar[seat_number].dob.month >> gondar_bahirdar[seat_number].dob.year;
-    cout << "Seat " << seat_number << " reserved for " << gondar_bahirdar[seat_number].name <<"("<<gondar_bahirdar[seat_number].gender <<","<<gondar_bahirdar[seat_number].dob.day<< 
+    cout << "Seat " << seat_number << " scheduled for " << gondar_bahirdar[seat_number].name <<"("<<gondar_bahirdar[seat_number].gender <<","<<gondar_bahirdar[seat_number].dob.day<< 
 	"/"<<gondar_bahirdar[seat_number].dob.month <<"/"<< gondar_bahirdar[seat_number].dob.year<<")"".\n";
     int x;
     menu_choice(x);
@@ -472,14 +461,14 @@ cout << "your fee will be 1674.5 birr\n";
     bool valid_seat_number;
     do {
         valid_seat_number = true;
-        cout << "\nEnter the seat number you wish to reserve: " << "------------";
+        cout << "\nEnter the seat number you wish to scheduled: " << "------------";
         cin >> seat_number;
         if (seat_number < 1 || seat_number > MAX_SEATS) {
             cout << "Error: Invalid seat number. Please try again.\n";
             valid_seat_number = false;
         }
         else if (gondar_addisabeba[seat_number].seat != 0) {
-            cout << "Error: Seat " << seat_number << " is already reserved.\n Please choose another seat ------------.\n";
+            cout << "Error: Seat " << seat_number << " is already scheduled.\n Please choose another seat ------------.\n";
             valid_seat_number = false;
         }
     } while (!valid_seat_number);
@@ -491,7 +480,7 @@ cout << "your fee will be 1674.5 birr\n";
     getline(cin, gondar_addisabeba[seat_number].gender);
     cout << "Enter passenger date of birth (dd/mm/yyyy): ";
     cin >>gondar_addisabeba[seat_number].dob.day >> gondar_addisabeba[seat_number].dob.month >>gondar_addisabeba[seat_number].dob.year;
-    cout << "Seat " << seat_number << " reserved for " << gondar_addisabeba[seat_number].name  <<"(" << gondar_addisabeba[seat_number].gender  <<","<< gondar_addisabeba[seat_number].dob.day<< 
+    cout << "Seat " << seat_number << " scheduled for " << gondar_addisabeba[seat_number].name  <<"(" << gondar_addisabeba[seat_number].gender  <<","<< gondar_addisabeba[seat_number].dob.day<< 
 	"/"<< gondar_addisabeba[seat_number].dob.month <<"/"<<  gondar_addisabeba[seat_number].dob.year<<")"".\n";
     int x;
     menu_choice(x);
@@ -501,7 +490,7 @@ case 3:
             	 destination_choice(passengers);
             	  break ;
 default:
-    cout << "please try again \n";
+    cout << "Error: \n"<<"please try again \n";
     break ;}
 }while(destination_place!=3);
 }
@@ -510,7 +499,7 @@ case 4:
 	 menu_choice(y);
 break ;
 	default:
-		cout<<"please try again";
+		cout<<"Error"<<"please try again";
 		destination_choice(passengers);
 }
 }
